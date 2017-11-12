@@ -1,0 +1,33 @@
+h1{
+	font-family: 'Permanent Marker', cursive;
+	color:#bd0b0b;
+	font-size: 120px;
+	text-align: center;
+	text-shadow: 0 0 4px white;
+}
+.img-responsive{
+	
+}
+
+.start{
+	text-align: center;
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
+
+.category {
+	text-align: center;
+	/*margin-top: 40px;*/
+	margin-bottom: 200px;
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
+.stats{
+	color:white;
+	font-family: 'Oswald', sans-serif;
+}
+.wins{
+	text-align: center;
+	color: white;
+	font-family: 'Oswald', sans-serif;
+}
