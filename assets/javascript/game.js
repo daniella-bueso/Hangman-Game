@@ -4,6 +4,7 @@ $(document).ready(function() {
 // VARIABLES
 	// Arrays with words for game
 	var countryName=["UNITED STATES","CANADA", "FRANCE", "SPAIN", "GERMANY", "PERU", "RUSSIA", "ARGENTINA", "JAPAN", "AUSTRALIA", "CHINA"];
+	
 	// Chooses random word from category
 	var randomWord = countryName[Math.floor(Math.random() * countryName.length)];
 
@@ -15,9 +16,9 @@ $(document).ready(function() {
     var wins = 0;
     var lettersGuessed = 0;
     var guessesLeft = 10;
-    var answerArray= [];
     var w;
-
+    var answerArray= [];
+   
 // Any key pressed starts game
 	document.onkeyup = function(event) {
 		startGame ();
@@ -35,7 +36,7 @@ $(document).ready(function() {
 
 	function letter () {
 		// letter typed by user goes into assigned box
-		var letter = document.getElementById("letters").innerHTML = ("Letters already guessed: " + value);
+		var letter = document.getElementById("letters").innerHTML = "Letters already guessed: " + value;
 
 		// Checks if the user has typed a letter
 		if (letter.length > 0) {
@@ -48,7 +49,8 @@ $(document).ready(function() {
 			}
 			//count the user's guesses
 			guessesLeft--;
-			document.getElementById("guesses").innerHTML = "Guesses left: <br>" + guessesLeft;
+			document.getElementById("guesses").innerHTML = "Guesses left: " + guessesLeft;
+			document.getElementById("random-word").innerHTML = answerArray.join(" ");
 		} 
 
 		if (guessesLeft < 0) {
@@ -60,11 +62,3 @@ $(document).ready(function() {
 }
 
 })
-	
-
-// build results into a variable to output to HTML;
-   //  var printWins = document.getElementById("wins").innerHTML = 1;
-   //  var printLetters = document.getElementById('letters').innerHTML = letters;
-   //  var printGuesses = document.getElementById('guesses').innerHTML = guesses;
-   
-   // })
