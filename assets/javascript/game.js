@@ -1,64 +1,101 @@
-// Only works with jquery
+
 $(document).ready(function() {
 
 // VARIABLES
 	// Arrays with words for game
-	var countryName=["UNITED STATES","CANADA", "FRANCE", "SPAIN", "GERMANY", "PERU", "RUSSIA", "ARGENTINA", "JAPAN", "AUSTRALIA", "CHINA"];
+	var countryName=["UNITED STATES","ITALY", "SWITZERLAND", "CANADA", "FRANCE", "SPAIN", "GERMANY", "PERU", "RUSSIA", "ARGENTINA", "JAPAN", "AUSTRALIA", "CHINA"];
 	
 	// Chooses random word from category
 	var randomWord = countryName[Math.floor(Math.random() * countryName.length)];
+		console.log(randomWord);
 
-	// var sportName=["Soccer", "Football", "Baseball", "Voleyball", "Swimming", "Tennis", "Track", "Wrestling", "Basketball", "Lacrosse", "Water Polo", "Field Hockey" ];
-	// var showName=["Game of Thrones", "Big Bang Theory", "Stranger Things", "House of Cards", "Friends", "The Flash", "Black Mirror", "How I Met Your Mother", "The Arrow"];
-	// var animalName=["dog", "cat", "deer", "wolf", "giraffe", "polar bear", "alligator", "elephant", "panther", "shark", "dolphin"];
+	// GLOBAL VARIABLES
+	var word;
+	var answerArray= [];
+	var wins = 0;
+	var guessesCount = 11;
+	var rightLetter = [];
+	var lettersGuessed = [];
+	var gameStatus = false;
 
-// Variables to keep count of wins, letters used, guesses left and array for answers
-    var wins = 0;
-    var lettersGuessed = 0;
-    var guessesLeft = 10;
-    var w;
-    var answerArray= [];
-   
-// Any key pressed starts game
-	document.onkeyup = function(event) {
-		startGame ();
-// FUNCTIONS
+	//==============================================================================================
+
+	// FUNCTIONS
+	// Function starts game by running through a loop and displaying underscores in placed of letters from random word
 	function startGame () {
+
+		gameStatus = true;
+		guessesCount = 10;
+		document.getElementById("guesses").innerHTML = "Guesses Left: "+ guessesCount;
 
 		for (var i = 0; i < randomWord.length; i++) {
 			answerArray[i]= "_";
 		}
 
-		w = answerArray.join = (" ");
-		document.getElementById("random-word").innerHTML = "Word is " + w;
+		word = answerArray.join(" ");
+		console.log("word " + word);
+		document.getElementById("random-word").innerHTML = word;
+	} 
 
-	}
+	// Function evaluating the positions of the given letter in the random word string
+    function letterInWord(keyword) {
+        // thhis positions the letter into the right place of the random word
+        var positions = answerArray;
+        console.log("positions " + positions);
+        for (i = 0 ; i < randomWord.length; i++) {
+            if (randomWord[i] === keyword){
+                positions[i] = keyword;
+	            document.getElementById("random-word").innerHTML = positions.join(" ");
+	            console.log(positions);
+	        }
+        }
+    }
+	// End of functions
+	//=============================================================================================
 
-	function letter () {
-		// letter typed by user goes into assigned box
-		var letter = document.getElementById("letters").innerHTML = "Letters already guessed: " + value;
+	// STARTS GAME WHEN ANY KEY IS PRESSED
 
-		// Checks if the user has typed a letter
-		if (letter.length > 0) {
-			for (var i = 0; i < randomWord.length; i++) {
-				
-				// Checks if random word contains the latter the user pressed
-				if (randomWord[i] === letter) {
-					answerArray[i] = letter;
-				}
-			}
-			//count the user's guesses
-			guessesLeft--;
-			document.getElementById("guesses").innerHTML = "Guesses left: " + guessesLeft;
-			document.getElementById("random-word").innerHTML = answerArray.join(" ");
-		} 
+	document.onkeyup = function(event) {
 
-		if (guessesLeft < 0) {
-			document.getElementById("random-word").innerHTML = "You lose!";
+		if(!gameStatus){
+			startGame();
 		}
 
+		var keyword = String.fromCharCode(event.keyCode).toUpperCase();
 
-	}
-}
+		console.log("key press " + keyword);
+		letterfound = randomWord.indexOf(keyword);
+
+		// If letter pressed is in the random word, then function letterInWord gets called
+
+		if (letterfound != -1) {
+			letterInWord (keyword);
+		}
+		// If letter found has been pressed already, do not allow same key to be pressed
+			else if (letterfound == -1) {
+
+			// Push letter pressed into the letters guessed section in html
+
+				lettersGuessed.push(keyword);
+				document.getElementById("letters").innerHTML = "Letters already guessed: " + lettersGuessed;
+
+			// Guesses decreases every time a letter is pressed
+				guessesCount--;
+				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
+				return;
+			}
+
+		if (guessesCount === 0) {
+				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
+				document.getElementById("random-word").innerHTML = "You lose, the word was: " + randomWord;
+			startGame();
+		}							
+	}	
+
+	//else if (letterfound === randomWord) {
+			// 	wins++;
+			// 	document.getElementById("wins").innerHTML = "Wins: "+ wins;
+			// 	startGame();
+			// }
 
 })
