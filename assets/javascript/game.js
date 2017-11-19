@@ -4,19 +4,17 @@ $(document).ready(function() {
 // VARIABLES
 	// Arrays with words for game
 	var countryName=["UNITED STATES","ITALY", "SWITZERLAND", "CANADA", "FRANCE", "SPAIN", "GERMANY", "PERU", "RUSSIA", "ARGENTINA", "JAPAN", "AUSTRALIA", "CHINA"];
-	
-	// Chooses random word from category
-	var randomWord = countryName[Math.floor(Math.random() * countryName.length)];
-		console.log(randomWord);
 
 	// GLOBAL VARIABLES
 	var word;
+	var randomWord;
 	var answerArray= [];
 	var wins = 0;
 	var guessesCount = 11;
 	var rightLetter = [];
 	var lettersGuessed = [];
 	var gameStatus = false;
+	var positions = [];
 
 	//==============================================================================================
 
@@ -28,27 +26,41 @@ $(document).ready(function() {
 		guessesCount = 10;
 		document.getElementById("guesses").innerHTML = "Guesses Left: "+ guessesCount;
 
+		// Chooses random word from category
+		randomWord = countryName[Math.floor(Math.random() * countryName.length)];
+
 		for (var i = 0; i < randomWord.length; i++) {
 			answerArray[i]= "_";
 		}
 
 		word = answerArray.join(" ");
-		console.log("word " + word);
 		document.getElementById("random-word").innerHTML = word;
 	} 
 
 	// Function evaluating the positions of the given letter in the random word string
     function letterInWord(keyword) {
         // thhis positions the letter into the right place of the random word
-        var positions = answerArray;
+        positions = answerArray;
         console.log("positions " + positions);
         for (i = 0 ; i < randomWord.length; i++) {
             if (randomWord[i] === keyword){
                 positions[i] = keyword;
-	            document.getElementById("random-word").innerHTML = positions.join(" ");
-	            console.log(positions);
+	            document.getElementById("random-word").innerHTML = positions.join(" ");     
 	        }
-        }
+	    }
+		positions = positions.join("");
+			if (positions === randomWord) {
+				wins++;
+				document.getElementById("wins").innerHTML = "Wins: "+ wins;
+				resetGame();
+				startGame();
+	        }	
+   }
+
+    function resetGame() {
+        lettersGuessed = [];
+        positions = [];
+        answerArray = [];
     }
 	// End of functions
 	//=============================================================================================
@@ -60,11 +72,10 @@ $(document).ready(function() {
 		if(!gameStatus){
 			startGame();
 		}
-
 		var keyword = String.fromCharCode(event.keyCode).toUpperCase();
 
-		console.log("key press " + keyword);
 		letterfound = randomWord.indexOf(keyword);
+		console.log(letterfound);
 
 		// If letter pressed is in the random word, then function letterInWord gets called
 
@@ -77,25 +88,17 @@ $(document).ready(function() {
 			// Push letter pressed into the letters guessed section in html
 
 				lettersGuessed.push(keyword);
-				document.getElementById("letters").innerHTML = "Letters already guessed: " + lettersGuessed;
+				document.getElementById("letters").innerHTML = "Letters already guessed: <br>" + lettersGuessed ;
 
 			// Guesses decreases every time a letter is pressed
 				guessesCount--;
 				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
-				return;
 			}
 
 		if (guessesCount === 0) {
-				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
-				document.getElementById("random-word").innerHTML = "You lose, the word was: " + randomWord;
+			document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
+			resetGame();
 			startGame();
 		}							
-	}	
-
-	//else if (letterfound === randomWord) {
-			// 	wins++;
-			// 	document.getElementById("wins").innerHTML = "Wins: "+ wins;
-			// 	startGame();
-			// }
-
+	}
 })
