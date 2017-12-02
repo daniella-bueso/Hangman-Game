@@ -15,6 +15,7 @@ $(document).ready(function() {
 	var lettersGuessed = [];
 	var gameStatus = false;
 	var positions = [];
+	var alreadyGuessed = -1;
 
 	//==============================================================================================
 
@@ -55,7 +56,7 @@ $(document).ready(function() {
 				resetGame();
 				startGame();
 	        }	
-   }
+   	}
 
     function resetGame() {
         lettersGuessed = [];
@@ -86,10 +87,11 @@ $(document).ready(function() {
 			else if (letterfound == -1) {
 
 			// Push letter pressed into the letters guessed section in html
-
-				lettersGuessed.push(keyword);
-				document.getElementById("letters").innerHTML = "Letters already guessed: <br>" + lettersGuessed ;
-
+				alreadyGuessed = lettersGuessed.indexOf (keyword);
+				if (alreadyGuessed == -1) {
+					lettersGuessed.push(keyword);
+					document.getElementById("letters").innerHTML = "Letters already guessed: <br>" + lettersGuessed ;
+				}
 			// Guesses decreases every time a letter is pressed
 				guessesCount--;
 				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
