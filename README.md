@@ -10,3 +10,5 @@ Guesses Left: (# of guesses left. This will update for every random word)
 Letters already guessed: (the specific letters that the user typed. Display these until the user either wins or loses.)
 
 When the player wins, the Wins counter will increase and start the game over again (without refreshing the page).
+
+![Hangman](assets/images/hangman.png)
