@@ -1,23 +1,23 @@
-/*Body styling*/
-.container{
-	margin: auto;
-	padding: auto;
+/* Body */
+.background {
+	background-image: url("../images/world.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
-
 /*Header*/
 h1{
 	font-family: 'Permanent Marker', cursive;
-	color:#bd0b0b;
-	font-size: 120px;
-	text-align: center;
-	text-shadow: 0 0 4px white;
+	color:#ff4e37;
+	font-size: 130px;
+	margin-top:20px;
+	margin-bottom:15px;
+	text-shadow: 4px 0 #feec82;
 }
 
 /*Content*/
 .start{
-	text-align: center;
 	color: white;
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 #random-word {
@@ -25,17 +25,29 @@ h1{
 	margin-top: 40px;
 	margin-bottom: 100px;
 	color: white;
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
-h3{
+.stats{
+	background-color: #0c2933;
+	padding:50px;
+	outline-style: dotted;
+    outline-color: #feec82;
+}
+.stats-middle{
+	background-color: #feec82;
+	padding:50px;
+	outline-style: dotted;
+    outline-color: #0c2933;
+}
+#letters {
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
+}
+#wins, #guesses{
 	color:white;
-	font-family: 'Oswald', sans-serif;
-	letter-spacing: 1px;
+	font-family: 'Roboto', sans-serif;
 }
 
-#wins{
-	text-align: center;
-}
 /*End of Content*/
 
 /*Making h1 and wins responsive to mobile devices*/

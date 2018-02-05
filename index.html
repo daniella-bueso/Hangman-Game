@@ -9,8 +9,7 @@
 	<!-- CSS Links -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<!-- jQuery Link -->
@@ -18,12 +17,12 @@
 </head>
 
 <!-- Start of Content -->
-<body background="assets/images/game-bg.jpg">
+<body class="background">
 	<div class="container">
 		<!-- Header -->
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
-				<h1>HANGMAN</h1>
+				<h1 class="text-center">HANGMAN</h1>
 			</div>
 		</div>		
 		<br>
@@ -32,7 +31,7 @@
 		<!-- Start of Content -->
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
-				<h2 class="start">Press any key to start game!</h2>
+				<h2 class="start text-center">Press any key to start game</h2>
 			</div>
 		</div>
 		
@@ -43,13 +42,13 @@
 		</div>
 
 		<div class="row">
-			<div class="col-xs-4 col-md-4">
+			<div class="stats text-center col-xs-4 col-md-3">
 				<h3 id="wins">Wins: </h3>
 			</div>
-			<div class="col-xs-4 col-md-4">
+			<div class="stats-middle text-center col-xs-4 col-md-6">
 				<h3 id="letters">Letters already guessed: </h3>
 			</div>
-			<div class="col-xs-4 col-md-4">
+			<div class="stats text-center col-xs-4 col-md-3">
 				<h3 id="guesses"> Guesses Left: 10</h3>
 			</div>
 		</div>
