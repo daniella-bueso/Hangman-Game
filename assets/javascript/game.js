@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 	// Function evaluating the positions of the given letter in the random word string
     function letterInWord(keyword) {
-        // thhis positions the letter into the right place of the random word
+        // this positions the letter into the right place of the random word
         positions = answerArray;
         console.log("positions " + positions);
         for (i = 0 ; i < randomWord.length; i++) {
