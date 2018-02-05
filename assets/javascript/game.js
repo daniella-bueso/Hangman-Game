@@ -84,7 +84,7 @@ $(document).ready(function() {
 			letterInWord (keyword);
 		}
 		// If letter found has been pressed already, do not allow same key to be pressed
-			else if (letterfound == -1) {
+			else if (letterfound === -1) {
 
 			// Push letter pressed into the letters guessed section in html
 				alreadyGuessed = lettersGuessed.indexOf (keyword);
