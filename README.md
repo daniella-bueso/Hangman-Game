@@ -13,4 +13,4 @@ When the player wins, the Wins counter will increase and start the game over aga
 
 ![Hangman](assets/images/hangman1.png)
 
-Pay game [here](https://danielladt.github.io/Hangman-Game/)
+Play game [here](https://danielladt.github.io/Hangman-Game/)
