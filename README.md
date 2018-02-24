@@ -1,6 +1,6 @@
 # Hangman-Game
 
-This is the tradional game of Hangman! 
+This is the traditional game of Hangman! 
 The app randomly picks a word in the category of countries, and the user has to guess the word the app chose.
 
 Wins: (# of times the user has guessed the word correctly)
